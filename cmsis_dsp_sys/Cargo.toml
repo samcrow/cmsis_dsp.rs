@@ -1,0 +1,19 @@
+[package]
+name = "cmsis_dsp_sys"
+description = "Low-level interfaces to the ARM CMSIS DSP library"
+version = "0.1.0"
+authors = ["Sam Crow <scrow@eng.ucsd.edu>"]
+edition = "2018"
+build = "build.rs"
+license = "0BSD"
+repository = "https://github.com/samcrow/cmsis_dsp.rs"
+# The actual library files have the format arm_cortex[version]_math
+links = "arm_cortex_math"
+
+[features]
+# Target a Cortex-M4 core
+cortex-m4 = []
+# Target a Cortex-M7 core
+cortex-m7 = []
+# Target a processor with a double-precision floating point unit (Cortex-M7 only)
+double-precision-fpu = []

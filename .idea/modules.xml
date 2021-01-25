@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cmsis_dsp.iml" filepath="$PROJECT_DIR$/cmsis_dsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cmsis_dsp_sys/cmsis_dsp_sys.iml" filepath="$PROJECT_DIR$/cmsis_dsp_sys/cmsis_dsp_sys.iml" />
+    </modules>
+  </component>
+</project>

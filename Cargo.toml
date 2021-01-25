@@ -1,0 +1,36 @@
+[package]
+name = "cmsis_dsp"
+description = "Interfaces to the CMSIS DSP library for ARM Cortex-M processors"
+version = "0.1.0"
+authors = ["Sam Crow <scrow@eng.ucsd.edu>"]
+edition = "2018"
+license = "0BSD"
+repository = "https://github.com/samcrow/cmsis_dsp.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fixed = "1.2.0"
+
+[dependencies.num-complex]
+version = "0.3.0"
+default-features = false
+
+[dependencies.cmsis_dsp_sys]
+path = "cmsis_dsp_sys"
+version = "0.1.0"
+
+[features]
+# Target a Cortex-M4 core
+cortex-m4 = ["cmsis_dsp_sys/cortex-m4"]
+# Target a Cortex-M7 core
+cortex-m7 = ["cmsis_dsp_sys/cortex-m7"]
+# Target a processor with a double-precision floating point unit (Cortex-M7 only)
+double-precision-fpu = ["cmsis_dsp_sys/double-precision-fpu"]
+
+[dev-dependencies]
+cortex-m-rt = "0.6.12"
+panic-semihosting = "0.5.3"
+
+[workspace]
+
