@@ -1,6 +1,6 @@
 [package]
 name = "cmsis_dsp"
-description = "Interfaces to the CMSIS DSP library for ARM Cortex-M processors"
+description = "Bindings to the CMSIS DSP library for ARM Cortex-M processors"
 version = "0.1.0"
 authors = ["Sam Crow <scrow@eng.ucsd.edu>"]
 edition = "2018"
