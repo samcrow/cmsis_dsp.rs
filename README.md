@@ -31,7 +31,6 @@ math functions are not included in the CMSIS-DSP libraries. This may cause linke
           >>> referenced by arm_math.h:6841 (../../Include/arm_math.h:6841)
           >>>               arm_cmplx_mag_f32.o:(arm_cmplx_mag_f32) in archive /path/cmsis_dsp_sys/ARM.CMSIS.5.7.0/CMSIS/DSP/Lib/GCC/libarm_cortexM4lf_math.a
           >>> referenced 4 more times
-
 ```
 
 The easiest way to fix this is to enable the `libm` or `micromath` feature on the `cmsis_dsp` package.
