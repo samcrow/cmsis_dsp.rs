@@ -7,6 +7,20 @@
 //! Complete documentation for the underlying library can be found
 //! [here](https://arm-software.github.io/CMSIS_5/DSP/html/index.html).
 //!
+//! ## Configuring and using the bindings
+//!
+//! Different versions of the library will be linked depending on the type of processor the code will run on.
+//! You may need to enable some Cargo features depending on the target:
+//!
+//!  * Cortex-M7: Enable the feature `cortex-m7`. Also, if the processor has a double-precision floating point unit, enable
+//!    the `double-precision-fpu` feature.
+//!  * Cortex-M33 (target `thumbv8m.main-none-eabi` or `thumbv8m.main-none-eabihf`): If the processor supports DSP
+//!    instructions, enable the `dsp-instructions` feature.
+//!
+//! All other targets will be configured automatically based on the target passed to cargo. If you forget to enable a
+//! feature, everything should still work but it may be slower.
+//!
+//!
 
 extern crate cmsis_dsp_sys;
 

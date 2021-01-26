@@ -7,13 +7,17 @@ edition = "2018"
 build = "build.rs"
 license = "0BSD"
 repository = "https://github.com/samcrow/cmsis_dsp.rs"
-# The actual library files have the format arm_cortex[version]_math
+# The actual library files have the format arm_cortex[flags]_math
 links = "arm_cortex_math"
 
 [features]
-# Target a Cortex-M4 core
-cortex-m4 = []
 # Target a Cortex-M7 core
+# If this feature is not enabled, the Cortex-M4 library will be used.
 cortex-m7 = []
 # Target a processor with a double-precision floating point unit (Cortex-M7 only)
+# If this feature is not enabled, the single-precision library will be used and double-precision floating point
+# operations will be emulated in software.
 double-precision-fpu = []
+# Target a Cortex-M33 processor with DSP instructions
+# If this feature is not enabled, the non-DSP library will be used.
+dsp-instructions = []

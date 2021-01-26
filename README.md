@@ -20,9 +20,13 @@ libraries. This package currently does not provide those functions.
 Different versions of the library will be linked depending on the type of processor the code will run on.
 You may need to enable some Cargo features depending on the target:
 
-* Cortex-M0, M0+, M3: No features required
-* Cortex-M4: Feature `cortex-m4`
-* Cortex-M7: Feature `cortex-m7`, and `double-precision-fpu` if the target has a double-precision floating-point unit
+ * Cortex-M7: Enable the feature `cortex-m7`. Also, if the processor has a double-precision floating point unit, enable
+   the `double-precision-fpu` feature.
+ * Cortex-M33 (target `thumbv8m.main-none-eabi` or `thumbv8m.main-none-eabihf`): If the processor supports DSP 
+   instructions, enable the `dsp-instructions` feature
+   
+All other targets will be configured automatically based on the target passed to cargo. If you forget to enable a
+feature, everything should still work but it may be slower.
 
 ## Licensing
 

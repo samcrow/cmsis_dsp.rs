@@ -21,12 +21,16 @@ path = "cmsis_dsp_sys"
 version = "0.1.0"
 
 [features]
-# Target a Cortex-M4 core
-cortex-m4 = ["cmsis_dsp_sys/cortex-m4"]
 # Target a Cortex-M7 core
+# If this feature is not enabled, the Cortex-M4 library will be used.
 cortex-m7 = ["cmsis_dsp_sys/cortex-m7"]
 # Target a processor with a double-precision floating point unit (Cortex-M7 only)
+# If this feature is not enabled, the single-precision library will be used and double-precision floating point
+# operations will be emulated in software.
 double-precision-fpu = ["cmsis_dsp_sys/double-precision-fpu"]
+# Target a Cortex-M33 processor with DSP instructions
+# If this feature is not enabled, the non-DSP library will be used.
+dsp-instructions = ["cmsis_dsp_sys/dsp-instructions"]
 
 [workspace]
 exclude = ["cmsis_dsp_example"]

@@ -684,16 +684,381 @@ extern "C" {
     );
 }
 extern "C" {
-    #[doc = " @brief  Initialization function for the floating-point Biquad cascade filter."]
-    #[doc = " @param[in,out] S          points to an instance of the floating-point Biquad cascade structure."]
-    #[doc = " @param[in]     numStages  number of 2nd order stages in the filter."]
-    #[doc = " @param[in]     pCoeffs    points to the filter coefficients."]
-    #[doc = " @param[in]     pState     points to the state buffer."]
     pub fn arm_biquad_cascade_df1_init_f32(
         S: *mut arm_biquad_casd_df1_inst_f32,
         numStages: u8,
         pCoeffs: *const float32_t,
         pState: *mut float32_t,
+    );
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise AND of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_and_u16(pSrcA: *const u16, pSrcB: *const u16, pDst: *mut u16, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise AND of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_and_u32(pSrcA: *const u32, pSrcB: *const u32, pDst: *mut u32, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise AND of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_and_u8(pSrcA: *const u8, pSrcB: *const u8, pDst: *mut u8, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise OR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_or_u16(pSrcA: *const u16, pSrcB: *const u16, pDst: *mut u16, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise OR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_or_u32(pSrcA: *const u32, pSrcB: *const u32, pDst: *mut u32, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise OR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_or_u8(pSrcA: *const u8, pSrcB: *const u8, pDst: *mut u8, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise NOT of a fixed-point vector."]
+    #[doc = " @param[in]     pSrc       points to input vector"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_not_u16(pSrc: *const u16, pDst: *mut u16, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise NOT of a fixed-point vector."]
+    #[doc = " @param[in]     pSrc       points to input vector"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_not_u32(pSrc: *const u32, pDst: *mut u32, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise NOT of a fixed-point vector."]
+    #[doc = " @param[in]     pSrc       points to input vector"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_not_u8(pSrc: *const u8, pDst: *mut u8, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise XOR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_xor_u16(pSrcA: *const u16, pSrcB: *const u16, pDst: *mut u16, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise XOR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_xor_u32(pSrcA: *const u32, pSrcB: *const u32, pDst: *mut u32, blockSize: u32);
+}
+extern "C" {
+    #[doc = " @brief         Compute the logical bitwise XOR of two fixed-point vectors."]
+    #[doc = " @param[in]     pSrcA      points to input vector A"]
+    #[doc = " @param[in]     pSrcB      points to input vector B"]
+    #[doc = " @param[out]    pDst       points to output vector"]
+    #[doc = " @param[in]     blockSize  number of samples in each vector"]
+    #[doc = " @return        none"]
+    pub fn arm_xor_u8(pSrcA: *const u8, pSrcB: *const u8, pDst: *mut u8, blockSize: u32);
+}
+pub mod arm_sort_alg {
+    #[doc = " @brief Struct for specifying sorting algorithm"]
+    pub type Type = crate::ctypes::c_uint;
+    pub const ARM_SORT_BITONIC: Type = 0;
+    pub const ARM_SORT_BUBBLE: Type = 1;
+    pub const ARM_SORT_HEAP: Type = 2;
+    pub const ARM_SORT_INSERTION: Type = 3;
+    pub const ARM_SORT_QUICK: Type = 4;
+    pub const ARM_SORT_SELECTION: Type = 5;
+}
+pub mod arm_sort_dir {
+    #[doc = " @brief Struct for specifying sorting algorithm"]
+    pub type Type = crate::ctypes::c_uint;
+    pub const ARM_SORT_DESCENDING: Type = 0;
+    pub const ARM_SORT_ASCENDING: Type = 1;
+}
+#[doc = " @brief Instance structure for the sorting algorithms."]
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct arm_sort_instance_f32 {
+    #[doc = "< Sorting algorithm selected"]
+    pub alg: arm_sort_alg::Type,
+    #[doc = "< Sorting order (direction)"]
+    pub dir: arm_sort_dir::Type,
+}
+#[test]
+fn bindgen_test_layout_arm_sort_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_sort_instance_f32>(),
+        8usize,
+        concat!("Size of: ", stringify!(arm_sort_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_sort_instance_f32>(),
+        4usize,
+        concat!("Alignment of ", stringify!(arm_sort_instance_f32))
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_sort_instance_f32>())).alg as *const _ as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_sort_instance_f32),
+            "::",
+            stringify!(alg)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_sort_instance_f32>())).dir as *const _ as usize },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_sort_instance_f32),
+            "::",
+            stringify!(dir)
+        )
+    );
+}
+extern "C" {
+    #[doc = " @param[in]  S          points to an instance of the sorting structure."]
+    #[doc = " @param[in]  pSrc       points to the block of input data."]
+    #[doc = " @param[out] pDst       points to the block of output data."]
+    #[doc = " @param[in]  blockSize  number of samples to process."]
+    pub fn arm_sort_f32(
+        S: *const arm_sort_instance_f32,
+        pSrc: *mut float32_t,
+        pDst: *mut float32_t,
+        blockSize: u32,
+    );
+}
+extern "C" {
+    #[doc = " @param[in,out]  S            points to an instance of the sorting structure."]
+    #[doc = " @param[in]      alg          Selected algorithm."]
+    #[doc = " @param[in]      dir          Sorting order."]
+    pub fn arm_sort_init_f32(
+        S: *mut arm_sort_instance_f32,
+        alg: arm_sort_alg::Type,
+        dir: arm_sort_dir::Type,
+    );
+}
+#[doc = " @brief Instance structure for the sorting algorithms."]
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct arm_merge_sort_instance_f32 {
+    #[doc = "< Sorting order (direction)"]
+    pub dir: arm_sort_dir::Type,
+    #[doc = "< Working buffer"]
+    pub buffer: *mut float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_merge_sort_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_merge_sort_instance_f32>(),
+        16usize,
+        concat!("Size of: ", stringify!(arm_merge_sort_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_merge_sort_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_merge_sort_instance_f32))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_merge_sort_instance_f32>())).dir as *const _ as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_merge_sort_instance_f32),
+            "::",
+            stringify!(dir)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_merge_sort_instance_f32>())).buffer as *const _ as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_merge_sort_instance_f32),
+            "::",
+            stringify!(buffer)
+        )
+    );
+}
+extern "C" {
+    #[doc = " @param[in]      S          points to an instance of the sorting structure."]
+    #[doc = " @param[in,out]  pSrc       points to the block of input data."]
+    #[doc = " @param[out]     pDst       points to the block of output data"]
+    #[doc = " @param[in]      blockSize  number of samples to process."]
+    pub fn arm_merge_sort_f32(
+        S: *const arm_merge_sort_instance_f32,
+        pSrc: *mut float32_t,
+        pDst: *mut float32_t,
+        blockSize: u32,
+    );
+}
+extern "C" {
+    #[doc = " @param[in,out]  S            points to an instance of the sorting structure."]
+    #[doc = " @param[in]      dir          Sorting order."]
+    #[doc = " @param[in]      buffer       Working buffer."]
+    pub fn arm_merge_sort_init_f32(
+        S: *mut arm_merge_sort_instance_f32,
+        dir: arm_sort_dir::Type,
+        buffer: *mut float32_t,
+    );
+}
+pub mod arm_spline_type {
+    #[doc = " @brief Struct for specifying cubic spline type"]
+    pub type Type = crate::ctypes::c_uint;
+    #[doc = "< Natural spline"]
+    pub const ARM_SPLINE_NATURAL: Type = 0;
+    #[doc = "< Parabolic runout spline"]
+    pub const ARM_SPLINE_PARABOLIC_RUNOUT: Type = 1;
+}
+#[doc = " @brief Instance structure for the floating-point cubic spline interpolation."]
+#[repr(C)]
+pub struct arm_spline_instance_f32 {
+    #[doc = "< Type (boundary conditions)"]
+    pub type_: arm_spline_type::Type,
+    #[doc = "< x values"]
+    pub x: *const float32_t,
+    #[doc = "< y values"]
+    pub y: *const float32_t,
+    #[doc = "< Number of known data points"]
+    pub n_x: u32,
+    #[doc = "< Coefficients buffer (b,c, and d)"]
+    pub coeffs: *mut float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_spline_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_spline_instance_f32>(),
+        40usize,
+        concat!("Size of: ", stringify!(arm_spline_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_spline_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_spline_instance_f32))
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_spline_instance_f32>())).type_ as *const _ as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_spline_instance_f32),
+            "::",
+            stringify!(type_)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_spline_instance_f32>())).x as *const _ as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_spline_instance_f32),
+            "::",
+            stringify!(x)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_spline_instance_f32>())).y as *const _ as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_spline_instance_f32),
+            "::",
+            stringify!(y)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_spline_instance_f32>())).n_x as *const _ as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_spline_instance_f32),
+            "::",
+            stringify!(n_x)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_spline_instance_f32>())).coeffs as *const _ as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_spline_instance_f32),
+            "::",
+            stringify!(coeffs)
+        )
+    );
+}
+extern "C" {
+    #[doc = " @brief Processing function for the floating-point cubic spline interpolation."]
+    #[doc = " @param[in]  S          points to an instance of the floating-point spline structure."]
+    #[doc = " @param[in]  xq         points to the x values ot the interpolated data points."]
+    #[doc = " @param[out] pDst       points to the block of output data."]
+    #[doc = " @param[in]  blockSize  number of samples of output data."]
+    pub fn arm_spline_f32(
+        S: *mut arm_spline_instance_f32,
+        xq: *const float32_t,
+        pDst: *mut float32_t,
+        blockSize: u32,
+    );
+}
+extern "C" {
+    #[doc = " @brief Initialization function for the floating-point cubic spline interpolation."]
+    #[doc = " @param[in,out] S        points to an instance of the floating-point spline structure."]
+    #[doc = " @param[in]     type     type of cubic spline interpolation (boundary conditions)"]
+    #[doc = " @param[in]     x        points to the x values of the known data points."]
+    #[doc = " @param[in]     y        points to the y values of the known data points."]
+    #[doc = " @param[in]     n        number of known data points."]
+    #[doc = " @param[in]     coeffs   coefficients array for b, c, and d"]
+    #[doc = " @param[in]     tempBuffer   buffer array for internal computations"]
+    pub fn arm_spline_init_f32(
+        S: *mut arm_spline_instance_f32,
+        type_: arm_spline_type::Type,
+        x: *const float32_t,
+        y: *const float32_t,
+        n: u32,
+        coeffs: *mut float32_t,
+        tempBuffer: *mut float32_t,
     );
 }
 #[doc = " @brief Instance structure for the floating-point matrix structure."]
@@ -2478,6 +2843,9 @@ fn bindgen_test_layout_arm_cfft_instance_q15() {
     );
 }
 extern "C" {
+    pub fn arm_cfft_init_q15(S: *mut arm_cfft_instance_q15, fftLen: u16) -> arm_status::Type;
+}
+extern "C" {
     pub fn arm_cfft_q15(
         S: *const arm_cfft_instance_q15,
         p1: *mut q15_t,
@@ -2553,6 +2921,9 @@ fn bindgen_test_layout_arm_cfft_instance_q31() {
             stringify!(bitRevLength)
         )
     );
+}
+extern "C" {
+    pub fn arm_cfft_init_q31(S: *mut arm_cfft_instance_q31, fftLen: u16) -> arm_status::Type;
 }
 extern "C" {
     pub fn arm_cfft_q31(
@@ -2632,9 +3003,89 @@ fn bindgen_test_layout_arm_cfft_instance_f32() {
     );
 }
 extern "C" {
+    pub fn arm_cfft_init_f32(S: *mut arm_cfft_instance_f32, fftLen: u16) -> arm_status::Type;
+}
+extern "C" {
     pub fn arm_cfft_f32(
         S: *const arm_cfft_instance_f32,
         p1: *mut float32_t,
+        ifftFlag: u8,
+        bitReverseFlag: u8,
+    );
+}
+#[doc = " @brief Instance structure for the Double Precision Floating-point CFFT/CIFFT function."]
+#[repr(C)]
+pub struct arm_cfft_instance_f64 {
+    #[doc = "< length of the FFT."]
+    pub fftLen: u16,
+    #[doc = "< points to the Twiddle factor table."]
+    pub pTwiddle: *const float64_t,
+    #[doc = "< points to the bit reversal table."]
+    pub pBitRevTable: *const u16,
+    #[doc = "< bit reversal table length."]
+    pub bitRevLength: u16,
+}
+#[test]
+fn bindgen_test_layout_arm_cfft_instance_f64() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_cfft_instance_f64>(),
+        32usize,
+        concat!("Size of: ", stringify!(arm_cfft_instance_f64))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_cfft_instance_f64>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_cfft_instance_f64))
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_cfft_instance_f64>())).fftLen as *const _ as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_cfft_instance_f64),
+            "::",
+            stringify!(fftLen)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_cfft_instance_f64>())).pTwiddle as *const _ as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_cfft_instance_f64),
+            "::",
+            stringify!(pTwiddle)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_cfft_instance_f64>())).pBitRevTable as *const _ as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_cfft_instance_f64),
+            "::",
+            stringify!(pBitRevTable)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_cfft_instance_f64>())).bitRevLength as *const _ as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_cfft_instance_f64),
+            "::",
+            stringify!(bitRevLength)
+        )
+    );
+}
+extern "C" {
+    pub fn arm_cfft_f64(
+        S: *const arm_cfft_instance_f64,
+        p1: *mut float64_t,
         ifftFlag: u8,
         bitReverseFlag: u8,
     );
@@ -3033,6 +3484,80 @@ extern "C" {
         pDst: *mut float32_t,
     );
 }
+#[doc = " @brief Instance structure for the Double Precision Floating-point RFFT/RIFFT function."]
+#[repr(C)]
+pub struct arm_rfft_fast_instance_f64 {
+    #[doc = "< Internal CFFT structure."]
+    pub Sint: arm_cfft_instance_f64,
+    #[doc = "< length of the real sequence"]
+    pub fftLenRFFT: u16,
+    #[doc = "< Twiddle factors real stage"]
+    pub pTwiddleRFFT: *const float64_t,
+}
+#[test]
+fn bindgen_test_layout_arm_rfft_fast_instance_f64() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_rfft_fast_instance_f64>(),
+        48usize,
+        concat!("Size of: ", stringify!(arm_rfft_fast_instance_f64))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_rfft_fast_instance_f64>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_rfft_fast_instance_f64))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_rfft_fast_instance_f64>())).Sint as *const _ as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_rfft_fast_instance_f64),
+            "::",
+            stringify!(Sint)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_rfft_fast_instance_f64>())).fftLenRFFT as *const _ as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_rfft_fast_instance_f64),
+            "::",
+            stringify!(fftLenRFFT)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_rfft_fast_instance_f64>())).pTwiddleRFFT as *const _
+                as usize
+        },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_rfft_fast_instance_f64),
+            "::",
+            stringify!(pTwiddleRFFT)
+        )
+    );
+}
+extern "C" {
+    pub fn arm_rfft_fast_init_f64(
+        S: *mut arm_rfft_fast_instance_f64,
+        fftLen: u16,
+    ) -> arm_status::Type;
+}
+extern "C" {
+    pub fn arm_rfft_fast_f64(
+        S: *mut arm_rfft_fast_instance_f64,
+        p: *mut float64_t,
+        pOut: *mut float64_t,
+        ifftFlag: u8,
+    );
+}
 #[doc = " @brief Instance structure for the floating-point RFFT/RIFFT function."]
 #[repr(C)]
 pub struct arm_rfft_fast_instance_f32 {
@@ -3100,32 +3625,8 @@ extern "C" {
     ) -> arm_status::Type;
 }
 extern "C" {
-    pub fn arm_rfft_32_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_64_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_128_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_256_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_512_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_1024_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_2048_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
-    pub fn arm_rfft_4096_fast_init_f32(S: *mut arm_rfft_fast_instance_f32) -> arm_status::Type;
-}
-extern "C" {
     pub fn arm_rfft_fast_f32(
-        S: *mut arm_rfft_fast_instance_f32,
+        S: *const arm_rfft_fast_instance_f32,
         p: *mut float32_t,
         pOut: *mut float32_t,
         ifftFlag: u8,
@@ -4991,7 +5492,7 @@ extern "C" {
     #[doc = " @param[in]  blockSize  number of samples to process."]
     pub fn arm_biquad_cas_df1_32x64_q31(
         S: *const arm_biquad_cas_df1_32x64_ins_q31,
-        pSrc: *mut q31_t,
+        pSrc: *const q31_t,
         pDst: *mut q31_t,
         blockSize: u32,
     );
@@ -5154,7 +5655,7 @@ pub struct arm_biquad_cascade_df2T_instance_f64 {
     #[doc = "< points to the array of state coefficients.  The array is of length 2*numStages."]
     pub pState: *mut float64_t,
     #[doc = "< points to the array of coefficients.  The array is of length 5*numStages."]
-    pub pCoeffs: *mut float64_t,
+    pub pCoeffs: *const float64_t,
 }
 #[test]
 fn bindgen_test_layout_arm_biquad_cascade_df2T_instance_f64() {
@@ -5248,7 +5749,7 @@ extern "C" {
     #[doc = " @param[in]  blockSize  number of samples to process."]
     pub fn arm_biquad_cascade_df2T_f64(
         S: *const arm_biquad_cascade_df2T_instance_f64,
-        pSrc: *mut float64_t,
+        pSrc: *const float64_t,
         pDst: *mut float64_t,
         blockSize: u32,
     );
@@ -5288,7 +5789,7 @@ extern "C" {
     pub fn arm_biquad_cascade_df2T_init_f64(
         S: *mut arm_biquad_cascade_df2T_instance_f64,
         numStages: u8,
-        pCoeffs: *mut float64_t,
+        pCoeffs: *const float64_t,
         pState: *mut float64_t,
     );
 }
@@ -7437,6 +7938,22 @@ extern "C" {
     pub fn arm_cos_q15(x: q15_t) -> q15_t;
 }
 extern "C" {
+    #[doc = "@brief         Floating-point vector of log values."]
+    #[doc = "@param[in]     pSrc       points to the input vector"]
+    #[doc = "@param[out]    pDst       points to the output vector"]
+    #[doc = "@param[in]     blockSize  number of samples in each vector"]
+    #[doc = "@return        none"]
+    pub fn arm_vlog_f32(pSrc: *const float32_t, pDst: *mut float32_t, blockSize: u32);
+}
+extern "C" {
+    #[doc = "@brief         Floating-point vector of exp values."]
+    #[doc = "@param[in]     pSrc       points to the input vector"]
+    #[doc = "@param[out]    pDst       points to the output vector"]
+    #[doc = "@param[in]     blockSize  number of samples in each vector"]
+    #[doc = "@return        none"]
+    pub fn arm_vexp_f32(pSrc: *const float32_t, pDst: *mut float32_t, blockSize: u32);
+}
+extern "C" {
     #[doc = "@brief         Q31 square root function."]
     #[doc = "@param[in]     in    input value.  The range of the input value is [0 +1) or 0x00000000 to 0x7FFFFFFF"]
     #[doc = "@param[out]    pOut  points to square root of input value"]
@@ -7768,6 +8285,14 @@ extern "C" {
     );
 }
 extern "C" {
+    #[doc = "@brief         Maximum value of a floating-point vector."]
+    #[doc = "@param[in]     pSrc       points to the input vector"]
+    #[doc = "@param[in]     blockSize  number of samples in input vector"]
+    #[doc = "@param[out]    pResult    maximum value returned here"]
+    #[doc = "@return        none"]
+    pub fn arm_max_no_idx_f32(pSrc: *const float32_t, blockSize: u32, pResult: *mut float32_t);
+}
+extern "C" {
     #[doc = " @brief  Q15 complex-by-complex multiplication"]
     #[doc = " @param[in]  pSrcA       points to the first input vector"]
     #[doc = " @param[in]  pSrcB       points to the second input vector"]
@@ -7890,8 +8415,1180 @@ extern "C" {
     #[doc = " @param[in]  blockSize  number of samples to process"]
     pub fn arm_q7_to_q15(pSrc: *const q7_t, pDst: *mut q15_t, blockSize: u32);
 }
+#[doc = " @brief Instance structure for linear SVM prediction function."]
+#[repr(C)]
+pub struct arm_svm_linear_instance_f32 {
+    #[doc = "< Number of support vectors"]
+    pub nbOfSupportVectors: u32,
+    #[doc = "< Dimension of vector space"]
+    pub vectorDimension: u32,
+    #[doc = "< Intercept"]
+    pub intercept: float32_t,
+    #[doc = "< Dual coefficients"]
+    pub dualCoefficients: *const float32_t,
+    #[doc = "< Support vectors"]
+    pub supportVectors: *const float32_t,
+    #[doc = "< The two SVM classes"]
+    pub classes: *const i32,
+}
+#[test]
+fn bindgen_test_layout_arm_svm_linear_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_svm_linear_instance_f32>(),
+        40usize,
+        concat!("Size of: ", stringify!(arm_svm_linear_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_svm_linear_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_svm_linear_instance_f32))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).nbOfSupportVectors as *const _
+                as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(nbOfSupportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).vectorDimension as *const _
+                as usize
+        },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(vectorDimension)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).intercept as *const _ as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(intercept)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).dualCoefficients as *const _
+                as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(dualCoefficients)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).supportVectors as *const _
+                as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(supportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_linear_instance_f32>())).classes as *const _ as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_linear_instance_f32),
+            "::",
+            stringify!(classes)
+        )
+    );
+}
+#[doc = " @brief Instance structure for polynomial SVM prediction function."]
+#[repr(C)]
+pub struct arm_svm_polynomial_instance_f32 {
+    #[doc = "< Number of support vectors"]
+    pub nbOfSupportVectors: u32,
+    #[doc = "< Dimension of vector space"]
+    pub vectorDimension: u32,
+    #[doc = "< Intercept"]
+    pub intercept: float32_t,
+    #[doc = "< Dual coefficients"]
+    pub dualCoefficients: *const float32_t,
+    #[doc = "< Support vectors"]
+    pub supportVectors: *const float32_t,
+    #[doc = "< The two SVM classes"]
+    pub classes: *const i32,
+    #[doc = "< Polynomial degree"]
+    pub degree: i32,
+    #[doc = "< Polynomial constant"]
+    pub coef0: float32_t,
+    #[doc = "< Gamma factor"]
+    pub gamma: float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_svm_polynomial_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_svm_polynomial_instance_f32>(),
+        56usize,
+        concat!("Size of: ", stringify!(arm_svm_polynomial_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_svm_polynomial_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_svm_polynomial_instance_f32))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).nbOfSupportVectors
+                as *const _ as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(nbOfSupportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).vectorDimension as *const _
+                as usize
+        },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(vectorDimension)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).intercept as *const _
+                as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(intercept)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).dualCoefficients
+                as *const _ as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(dualCoefficients)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).supportVectors as *const _
+                as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(supportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).classes as *const _
+                as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(classes)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).degree as *const _ as usize
+        },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(degree)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).coef0 as *const _ as usize
+        },
+        44usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(coef0)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_polynomial_instance_f32>())).gamma as *const _ as usize
+        },
+        48usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_polynomial_instance_f32),
+            "::",
+            stringify!(gamma)
+        )
+    );
+}
+#[doc = " @brief Instance structure for rbf SVM prediction function."]
+#[repr(C)]
+pub struct arm_svm_rbf_instance_f32 {
+    #[doc = "< Number of support vectors"]
+    pub nbOfSupportVectors: u32,
+    #[doc = "< Dimension of vector space"]
+    pub vectorDimension: u32,
+    #[doc = "< Intercept"]
+    pub intercept: float32_t,
+    #[doc = "< Dual coefficients"]
+    pub dualCoefficients: *const float32_t,
+    #[doc = "< Support vectors"]
+    pub supportVectors: *const float32_t,
+    #[doc = "< The two SVM classes"]
+    pub classes: *const i32,
+    #[doc = "< Gamma factor"]
+    pub gamma: float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_svm_rbf_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_svm_rbf_instance_f32>(),
+        48usize,
+        concat!("Size of: ", stringify!(arm_svm_rbf_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_svm_rbf_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_svm_rbf_instance_f32))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).nbOfSupportVectors as *const _
+                as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(nbOfSupportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).vectorDimension as *const _
+                as usize
+        },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(vectorDimension)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).intercept as *const _ as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(intercept)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).dualCoefficients as *const _
+                as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(dualCoefficients)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).supportVectors as *const _
+                as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(supportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).classes as *const _ as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(classes)
+        )
+    );
+    assert_eq!(
+        unsafe { &(*(::core::ptr::null::<arm_svm_rbf_instance_f32>())).gamma as *const _ as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_rbf_instance_f32),
+            "::",
+            stringify!(gamma)
+        )
+    );
+}
+#[doc = " @brief Instance structure for sigmoid SVM prediction function."]
+#[repr(C)]
+pub struct arm_svm_sigmoid_instance_f32 {
+    #[doc = "< Number of support vectors"]
+    pub nbOfSupportVectors: u32,
+    #[doc = "< Dimension of vector space"]
+    pub vectorDimension: u32,
+    #[doc = "< Intercept"]
+    pub intercept: float32_t,
+    #[doc = "< Dual coefficients"]
+    pub dualCoefficients: *const float32_t,
+    #[doc = "< Support vectors"]
+    pub supportVectors: *const float32_t,
+    #[doc = "< The two SVM classes"]
+    pub classes: *const i32,
+    #[doc = "< Independant constant"]
+    pub coef0: float32_t,
+    #[doc = "< Gamma factor"]
+    pub gamma: float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_svm_sigmoid_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_svm_sigmoid_instance_f32>(),
+        48usize,
+        concat!("Size of: ", stringify!(arm_svm_sigmoid_instance_f32))
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_svm_sigmoid_instance_f32>(),
+        8usize,
+        concat!("Alignment of ", stringify!(arm_svm_sigmoid_instance_f32))
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).nbOfSupportVectors as *const _
+                as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(nbOfSupportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).vectorDimension as *const _
+                as usize
+        },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(vectorDimension)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).intercept as *const _ as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(intercept)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).dualCoefficients as *const _
+                as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(dualCoefficients)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).supportVectors as *const _
+                as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(supportVectors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).classes as *const _ as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(classes)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).coef0 as *const _ as usize
+        },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(coef0)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_svm_sigmoid_instance_f32>())).gamma as *const _ as usize
+        },
+        44usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_svm_sigmoid_instance_f32),
+            "::",
+            stringify!(gamma)
+        )
+    );
+}
+extern "C" {
+    #[doc = " @brief        SVM linear instance init function"]
+    #[doc = " @param[in]    S                      Parameters for SVM functions"]
+    #[doc = " @param[in]    nbOfSupportVectors     Number of support vectors"]
+    #[doc = " @param[in]    vectorDimension        Dimension of vector space"]
+    #[doc = " @param[in]    intercept              Intercept"]
+    #[doc = " @param[in]    dualCoefficients       Array of dual coefficients"]
+    #[doc = " @param[in]    supportVectors         Array of support vectors"]
+    #[doc = " @param[in]    classes                Array of 2 classes ID"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_linear_init_f32(
+        S: *mut arm_svm_linear_instance_f32,
+        nbOfSupportVectors: u32,
+        vectorDimension: u32,
+        intercept: float32_t,
+        dualCoefficients: *const float32_t,
+        supportVectors: *const float32_t,
+        classes: *const i32,
+    );
+}
+extern "C" {
+    #[doc = " @brief SVM linear prediction"]
+    #[doc = " @param[in]    S          Pointer to an instance of the linear SVM structure."]
+    #[doc = " @param[in]    in         Pointer to input vector"]
+    #[doc = " @param[out]   pResult    Decision value"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_linear_predict_f32(
+        S: *const arm_svm_linear_instance_f32,
+        in_: *const float32_t,
+        pResult: *mut i32,
+    );
+}
+extern "C" {
+    #[doc = " @brief        SVM polynomial instance init function"]
+    #[doc = " @param[in]    S                      points to an instance of the polynomial SVM structure."]
+    #[doc = " @param[in]    nbOfSupportVectors     Number of support vectors"]
+    #[doc = " @param[in]    vectorDimension        Dimension of vector space"]
+    #[doc = " @param[in]    intercept              Intercept"]
+    #[doc = " @param[in]    dualCoefficients       Array of dual coefficients"]
+    #[doc = " @param[in]    supportVectors         Array of support vectors"]
+    #[doc = " @param[in]    classes                Array of 2 classes ID"]
+    #[doc = " @param[in]    degree                 Polynomial degree"]
+    #[doc = " @param[in]    coef0                  coeff0 (scikit-learn terminology)"]
+    #[doc = " @param[in]    gamma                  gamma (scikit-learn terminology)"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_polynomial_init_f32(
+        S: *mut arm_svm_polynomial_instance_f32,
+        nbOfSupportVectors: u32,
+        vectorDimension: u32,
+        intercept: float32_t,
+        dualCoefficients: *const float32_t,
+        supportVectors: *const float32_t,
+        classes: *const i32,
+        degree: i32,
+        coef0: float32_t,
+        gamma: float32_t,
+    );
+}
+extern "C" {
+    #[doc = " @brief SVM polynomial prediction"]
+    #[doc = " @param[in]    S          Pointer to an instance of the polynomial SVM structure."]
+    #[doc = " @param[in]    in         Pointer to input vector"]
+    #[doc = " @param[out]   pResult    Decision value"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_polynomial_predict_f32(
+        S: *const arm_svm_polynomial_instance_f32,
+        in_: *const float32_t,
+        pResult: *mut i32,
+    );
+}
+extern "C" {
+    #[doc = " @brief        SVM radial basis function instance init function"]
+    #[doc = " @param[in]    S                      points to an instance of the polynomial SVM structure."]
+    #[doc = " @param[in]    nbOfSupportVectors     Number of support vectors"]
+    #[doc = " @param[in]    vectorDimension        Dimension of vector space"]
+    #[doc = " @param[in]    intercept              Intercept"]
+    #[doc = " @param[in]    dualCoefficients       Array of dual coefficients"]
+    #[doc = " @param[in]    supportVectors         Array of support vectors"]
+    #[doc = " @param[in]    classes                Array of 2 classes ID"]
+    #[doc = " @param[in]    gamma                  gamma (scikit-learn terminology)"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_rbf_init_f32(
+        S: *mut arm_svm_rbf_instance_f32,
+        nbOfSupportVectors: u32,
+        vectorDimension: u32,
+        intercept: float32_t,
+        dualCoefficients: *const float32_t,
+        supportVectors: *const float32_t,
+        classes: *const i32,
+        gamma: float32_t,
+    );
+}
+extern "C" {
+    #[doc = " @brief SVM rbf prediction"]
+    #[doc = " @param[in]    S         Pointer to an instance of the rbf SVM structure."]
+    #[doc = " @param[in]    in        Pointer to input vector"]
+    #[doc = " @param[out]   pResult   decision value"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_rbf_predict_f32(
+        S: *const arm_svm_rbf_instance_f32,
+        in_: *const float32_t,
+        pResult: *mut i32,
+    );
+}
+extern "C" {
+    #[doc = " @brief        SVM sigmoid instance init function"]
+    #[doc = " @param[in]    S                      points to an instance of the rbf SVM structure."]
+    #[doc = " @param[in]    nbOfSupportVectors     Number of support vectors"]
+    #[doc = " @param[in]    vectorDimension        Dimension of vector space"]
+    #[doc = " @param[in]    intercept              Intercept"]
+    #[doc = " @param[in]    dualCoefficients       Array of dual coefficients"]
+    #[doc = " @param[in]    supportVectors         Array of support vectors"]
+    #[doc = " @param[in]    classes                Array of 2 classes ID"]
+    #[doc = " @param[in]    coef0                  coeff0 (scikit-learn terminology)"]
+    #[doc = " @param[in]    gamma                  gamma (scikit-learn terminology)"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_sigmoid_init_f32(
+        S: *mut arm_svm_sigmoid_instance_f32,
+        nbOfSupportVectors: u32,
+        vectorDimension: u32,
+        intercept: float32_t,
+        dualCoefficients: *const float32_t,
+        supportVectors: *const float32_t,
+        classes: *const i32,
+        coef0: float32_t,
+        gamma: float32_t,
+    );
+}
+extern "C" {
+    #[doc = " @brief SVM sigmoid prediction"]
+    #[doc = " @param[in]    S        Pointer to an instance of the rbf SVM structure."]
+    #[doc = " @param[in]    in       Pointer to input vector"]
+    #[doc = " @param[out]   pResult  Decision value"]
+    #[doc = " @return none."]
+    #[doc = ""]
+    pub fn arm_svm_sigmoid_predict_f32(
+        S: *const arm_svm_sigmoid_instance_f32,
+        in_: *const float32_t,
+        pResult: *mut i32,
+    );
+}
+#[doc = " @brief Instance structure for Naive Gaussian Bayesian estimator."]
+#[repr(C)]
+pub struct arm_gaussian_naive_bayes_instance_f32 {
+    #[doc = "< Dimension of vector space"]
+    pub vectorDimension: u32,
+    #[doc = "< Number of different classes"]
+    pub numberOfClasses: u32,
+    #[doc = "< Mean values for the Gaussians"]
+    pub theta: *const float32_t,
+    #[doc = "< Variances for the Gaussians"]
+    pub sigma: *const float32_t,
+    #[doc = "< Class prior probabilities"]
+    pub classPriors: *const float32_t,
+    #[doc = "< Additive value to variances"]
+    pub epsilon: float32_t,
+}
+#[test]
+fn bindgen_test_layout_arm_gaussian_naive_bayes_instance_f32() {
+    assert_eq!(
+        ::core::mem::size_of::<arm_gaussian_naive_bayes_instance_f32>(),
+        40usize,
+        concat!(
+            "Size of: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32)
+        )
+    );
+    assert_eq!(
+        ::core::mem::align_of::<arm_gaussian_naive_bayes_instance_f32>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).vectorDimension
+                as *const _ as usize
+        },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(vectorDimension)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).numberOfClasses
+                as *const _ as usize
+        },
+        4usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(numberOfClasses)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).theta as *const _
+                as usize
+        },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(theta)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).sigma as *const _
+                as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(sigma)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).classPriors
+                as *const _ as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(classPriors)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            &(*(::core::ptr::null::<arm_gaussian_naive_bayes_instance_f32>())).epsilon as *const _
+                as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(arm_gaussian_naive_bayes_instance_f32),
+            "::",
+            stringify!(epsilon)
+        )
+    );
+}
+extern "C" {
+    #[doc = " @brief Naive Gaussian Bayesian Estimator"]
+    #[doc = ""]
+    #[doc = " @param[in]  S         points to a naive bayes instance structure"]
+    #[doc = " @param[in]  in        points to the elements of the input vector."]
+    #[doc = " @param[in]  pBuffer   points to a buffer of length numberOfClasses"]
+    #[doc = " @return The predicted class"]
+    #[doc = ""]
+    pub fn arm_gaussian_naive_bayes_predict_f32(
+        S: *const arm_gaussian_naive_bayes_instance_f32,
+        in_: *const float32_t,
+        pBuffer: *mut float32_t,
+    ) -> u32;
+}
+extern "C" {
+    #[doc = " @brief Computation of the LogSumExp"]
+    #[doc = ""]
+    #[doc = " In probabilistic computations, the dynamic of the probability values can be very"]
+    #[doc = " wide because they come from gaussian functions."]
+    #[doc = " To avoid underflow and overflow issues, the values are represented by their log."]
+    #[doc = " In this representation, multiplying the original exp values is easy : their logs are added."]
+    #[doc = " But adding the original exp values is requiring some special handling and it is the"]
+    #[doc = " goal of the LogSumExp function."]
+    #[doc = ""]
+    #[doc = " If the values are x1...xn, the function is computing:"]
+    #[doc = ""]
+    #[doc = " ln(exp(x1) + ... + exp(xn)) and the computation is done in such a way that"]
+    #[doc = " rounding issues are minimised."]
+    #[doc = ""]
+    #[doc = " The max xm of the values is extracted and the function is computing:"]
+    #[doc = " xm + ln(exp(x1 - xm) + ... + exp(xn - xm))"]
+    #[doc = ""]
+    #[doc = " @param[in]  *in         Pointer to an array of input values."]
+    #[doc = " @param[in]  blockSize   Number of samples in the input array."]
+    #[doc = " @return LogSumExp"]
+    #[doc = ""]
+    pub fn arm_logsumexp_f32(in_: *const float32_t, blockSize: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief Dot product with log arithmetic"]
+    #[doc = ""]
+    #[doc = " Vectors are containing the log of the samples"]
+    #[doc = ""]
+    #[doc = " @param[in]       pSrcA points to the first input vector"]
+    #[doc = " @param[in]       pSrcB points to the second input vector"]
+    #[doc = " @param[in]       blockSize number of samples in each vector"]
+    #[doc = " @param[in]       pTmpBuffer temporary buffer of length blockSize"]
+    #[doc = " @return The log of the dot product ."]
+    #[doc = ""]
+    pub fn arm_logsumexp_dot_prod_f32(
+        pSrcA: *const float32_t,
+        pSrcB: *const float32_t,
+        blockSize: u32,
+        pTmpBuffer: *mut float32_t,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief Entropy"]
+    #[doc = ""]
+    #[doc = " @param[in]  pSrcA        Array of input values."]
+    #[doc = " @param[in]  blockSize    Number of samples in the input array."]
+    #[doc = " @return     Entropy      -Sum(p ln p)"]
+    #[doc = ""]
+    pub fn arm_entropy_f32(pSrcA: *const float32_t, blockSize: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief Entropy"]
+    #[doc = ""]
+    #[doc = " @param[in]  pSrcA        Array of input values."]
+    #[doc = " @param[in]  blockSize    Number of samples in the input array."]
+    #[doc = " @return     Entropy      -Sum(p ln p)"]
+    #[doc = ""]
+    pub fn arm_entropy_f64(pSrcA: *const float64_t, blockSize: u32) -> float64_t;
+}
+extern "C" {
+    #[doc = " @brief Kullback-Leibler"]
+    #[doc = ""]
+    #[doc = " @param[in]  pSrcA         Pointer to an array of input values for probability distribution A."]
+    #[doc = " @param[in]  pSrcB         Pointer to an array of input values for probability distribution B."]
+    #[doc = " @param[in]  blockSize     Number of samples in the input array."]
+    #[doc = " @return Kullback-Leibler  Divergence D(A || B)"]
+    #[doc = ""]
+    pub fn arm_kullback_leibler_f32(
+        pSrcA: *const float32_t,
+        pSrcB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief Kullback-Leibler"]
+    #[doc = ""]
+    #[doc = " @param[in]  pSrcA         Pointer to an array of input values for probability distribution A."]
+    #[doc = " @param[in]  pSrcB         Pointer to an array of input values for probability distribution B."]
+    #[doc = " @param[in]  blockSize     Number of samples in the input array."]
+    #[doc = " @return Kullback-Leibler  Divergence D(A || B)"]
+    #[doc = ""]
+    pub fn arm_kullback_leibler_f64(
+        pSrcA: *const float64_t,
+        pSrcB: *const float64_t,
+        blockSize: u32,
+    ) -> float64_t;
+}
+extern "C" {
+    #[doc = " @brief Weighted sum"]
+    #[doc = ""]
+    #[doc = ""]
+    #[doc = " @param[in]    *in           Array of input values."]
+    #[doc = " @param[in]    *weigths      Weights"]
+    #[doc = " @param[in]    blockSize     Number of samples in the input array."]
+    #[doc = " @return Weighted sum"]
+    #[doc = ""]
+    pub fn arm_weighted_sum_f32(
+        in_: *const float32_t,
+        weigths: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief Barycenter"]
+    #[doc = ""]
+    #[doc = ""]
+    #[doc = " @param[in]    in         List of vectors"]
+    #[doc = " @param[in]    weights    Weights of the vectors"]
+    #[doc = " @param[out]   out        Barycenter"]
+    #[doc = " @param[in]    nbVectors  Number of vectors"]
+    #[doc = " @param[in]    vecDim     Dimension of space (vector dimension)"]
+    #[doc = " @return       None"]
+    #[doc = ""]
+    pub fn arm_barycenter_f32(
+        in_: *const float32_t,
+        weights: *const float32_t,
+        out: *mut float32_t,
+        nbVectors: u32,
+        vecDim: u32,
+    );
+}
+extern "C" {
+    #[doc = " @brief        Euclidean distance between two vectors"]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_euclidean_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Bray-Curtis distance between two vectors"]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_braycurtis_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Canberra distance between two vectors"]
+    #[doc = ""]
+    #[doc = " This function may divide by zero when samples pA[i] and pB[i] are both zero."]
+    #[doc = " The result of the computation will be correct. So the division per zero may be"]
+    #[doc = " ignored."]
+    #[doc = ""]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_canberra_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Chebyshev distance between two vectors"]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_chebyshev_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Cityblock (Manhattan) distance between two vectors"]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_cityblock_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Correlation distance between two vectors"]
+    #[doc = ""]
+    #[doc = " The input vectors are modified in place !"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_correlation_distance_f32(
+        pA: *mut float32_t,
+        pB: *mut float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Cosine distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_cosine_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Jensen-Shannon distance between two vectors"]
+    #[doc = ""]
+    #[doc = " This function is assuming that elements of second vector are > 0"]
+    #[doc = " and 0 only when the corresponding element of first vector is 0."]
+    #[doc = " Otherwise the result of the computation does not make sense"]
+    #[doc = " and for speed reasons, the cases returning NaN or Infinity are not"]
+    #[doc = " managed."]
+    #[doc = ""]
+    #[doc = " When the function is computing x log (x / y) with x 0 and y 0,"]
+    #[doc = " it will compute the right value (0) but a division per zero will occur"]
+    #[doc = " and shoudl be ignored in client code."]
+    #[doc = ""]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_jensenshannon_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Minkowski distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA         First vector"]
+    #[doc = " @param[in]    pB         Second vector"]
+    #[doc = " @param[in]    n          Norm order (>= 2)"]
+    #[doc = " @param[in]    blockSize  vector length"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_minkowski_distance_f32(
+        pA: *const float32_t,
+        pB: *const float32_t,
+        order: i32,
+        blockSize: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Dice distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    order           Distance order"]
+    #[doc = " @param[in]    blockSize       Number of samples"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_dice_distance(pA: *const u32, pB: *const u32, numberOfBools: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Hamming distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_hamming_distance(pA: *const u32, pB: *const u32, numberOfBools: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Jaccard distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_jaccard_distance(pA: *const u32, pB: *const u32, numberOfBools: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Kulsinski distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_kulsinski_distance(pA: *const u32, pB: *const u32, numberOfBools: u32) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Roger Stanimoto distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_rogerstanimoto_distance(
+        pA: *const u32,
+        pB: *const u32,
+        numberOfBools: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Russell-Rao distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_russellrao_distance(pA: *const u32, pB: *const u32, numberOfBools: u32)
+        -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Sokal-Michener distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_sokalmichener_distance(
+        pA: *const u32,
+        pB: *const u32,
+        numberOfBools: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Sokal-Sneath distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_sokalsneath_distance(
+        pA: *const u32,
+        pB: *const u32,
+        numberOfBools: u32,
+    ) -> float32_t;
+}
+extern "C" {
+    #[doc = " @brief        Yule distance between two vectors"]
+    #[doc = ""]
+    #[doc = " @param[in]    pA              First vector of packed booleans"]
+    #[doc = " @param[in]    pB              Second vector of packed booleans"]
+    #[doc = " @param[in]    numberOfBools   Number of booleans"]
+    #[doc = " @return distance"]
+    #[doc = ""]
+    pub fn arm_yule_distance(pA: *const u32, pB: *const u32, numberOfBools: u32) -> float32_t;
+}
 extern "C" {
     pub static armBitRevTable: [u16; 1024usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_16: [u16; 12usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_32: [u16; 24usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_64: [u16; 56usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_128: [u16; 112usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_256: [u16; 240usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_512: [u16; 480usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_1024: [u16; 992usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_2048: [u16; 1984usize];
+}
+extern "C" {
+    pub static armBitRevIndexTableF64_4096: [u16; 4032usize];
 }
 extern "C" {
     pub static armBitRevIndexTable16: [u16; 20usize];
@@ -7952,6 +9649,33 @@ extern "C" {
 }
 extern "C" {
     pub static armRecipTableQ31: [q31_t; 64usize];
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len16: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len32: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len64: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len128: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len256: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len512: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len1024: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len2048: arm_cfft_instance_f64;
+}
+extern "C" {
+    pub static arm_cfft_sR_f64_len4096: arm_cfft_instance_f64;
 }
 extern "C" {
     pub static arm_cfft_sR_f32_len16: arm_cfft_instance_f32;
