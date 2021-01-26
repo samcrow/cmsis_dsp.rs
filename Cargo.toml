@@ -28,9 +28,5 @@ cortex-m7 = ["cmsis_dsp_sys/cortex-m7"]
 # Target a processor with a double-precision floating point unit (Cortex-M7 only)
 double-precision-fpu = ["cmsis_dsp_sys/double-precision-fpu"]
 
-[dev-dependencies]
-cortex-m-rt = "0.6.12"
-panic-semihosting = "0.5.3"
-
 [workspace]
-
+exclude = ["cmsis_dsp_example"]

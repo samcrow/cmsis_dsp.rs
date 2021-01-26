@@ -1,0 +1,15 @@
+[package]
+name = "cmsis_dsp_example"
+version = "0.1.0"
+authors = ["Sam Crow <scrow@eng.ucsd.edu>"]
+edition = "2018"
+build = "build.rs"
+
+[dependencies]
+cortex-m = "0.7.1"
+cortex-m-rt = "0.6.12"
+panic-semihosting = "0.5.3"
+
+[dependencies.cmsis_dsp]
+path = ".."
+features = ["cortex-m4"]

@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 
+extern crate cortex_m;
 extern crate cortex_m_rt;
 extern crate panic_semihosting;
 use cortex_m_rt::entry;
@@ -19,6 +20,10 @@ fn main() -> ! {
     let mut output_values: [f32; 32] = [0.0; 32];
 
     fft.run(&input_values, &mut output_values);
+
+    // Test the absolute value function
+    let mut abs_output: [f32; 32] = [0.0; 32];
+    cmsis_dsp::basic::abs_f32(&output_values, &mut abs_output);
 
     loop {}
 }

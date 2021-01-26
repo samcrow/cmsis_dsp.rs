@@ -92,4 +92,7 @@ fn main() {
 
     println!("cargo:rustc-link-search={}", lib_dir.display());
     println!("cargo:rustc-link-lib={}", lib_name);
+
+    // Don't needlesly re-run the build script
+    println!("cargo:rerun-if-changed=build.rs");
 }

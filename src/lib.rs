@@ -11,9 +11,6 @@
 extern crate cmsis_dsp_sys;
 
 pub mod basic;
-pub mod matrix;
-pub mod statistics;
-pub mod support;
 pub mod transform;
 
 /// DSP library errors

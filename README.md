@@ -10,6 +10,11 @@ This package provides Rust bindings to CMSIS-DSP for Cortex-M0, M0+, M3, M4, and
 High-level bindings are currently provided for basic functions and fast Fourier transforms. The CMSIS-DSP library also
 has other functionality, but nobody has written Rust bindings for it yet.
 
+### Limitations
+
+Some CMSIS-DSP functions, like `arm_sqrt_f32`, are defined inline in the header files and are missing from the compiled
+libraries. This package currently does not provide those functions.
+
 ## Configuring and using the bindings
 
 Different versions of the library will be linked depending on the type of processor the code will run on.
