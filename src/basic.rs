@@ -1,9 +1,8 @@
 //! Basic math functions
 
-use core::convert::TryInto;
-use core::fmt::Debug;
-
 use fixed::types::{I16F48, I18F14, I1F15, I1F31, I1F7, I34F30};
+
+use crate::check_length;
 
 /// Calculates the absolute value of multiple values
 ///
@@ -345,55 +344,5 @@ pub fn multiply_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
             dst.as_mut_ptr() as *mut _,
             length,
         );
-    }
-}
-
-/// Checks that all elements of the provided lengths value/tuple are equal, and that the length
-/// value fits into the returned integer type. This function panics if any condition does not hold.
-fn check_length<L, N>(lengths: L) -> N
-where
-    L: Lengths,
-    usize: TryInto<N>,
-    <usize as TryInto<N>>::Error: Debug,
-{
-    lengths.assert_lengths_equal();
-    lengths
-        .length()
-        .try_into()
-        .expect("Length too large for size type")
-}
-
-trait Lengths {
-    fn assert_lengths_equal(&self);
-    fn length(&self) -> usize;
-}
-
-impl Lengths for usize {
-    fn assert_lengths_equal(&self) {
-        // Only one element, nothing to do
-    }
-
-    fn length(&self) -> usize {
-        *self
-    }
-}
-
-impl Lengths for (usize, usize) {
-    fn assert_lengths_equal(&self) {
-        assert_eq!(self.0, self.1);
-    }
-
-    fn length(&self) -> usize {
-        self.0
-    }
-}
-
-impl Lengths for (usize, usize, usize) {
-    fn assert_lengths_equal(&self) {
-        assert!(self.0 == self.1 && self.1 == self.2);
-    }
-
-    fn length(&self) -> usize {
-        self.0
     }
 }

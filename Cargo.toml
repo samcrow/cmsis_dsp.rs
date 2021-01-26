@@ -16,6 +16,14 @@ fixed = "1.2.0"
 version = "0.3.0"
 default-features = false
 
+[dependencies.libm]
+version = "0.2.1"
+optional = true
+
+[dependencies.micromath]
+version = "1.1.0"
+optional = true
+
 [dependencies.cmsis_dsp_sys]
 path = "cmsis_dsp_sys"
 version = "0.1.0"

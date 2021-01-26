@@ -9,6 +9,13 @@ build = "build.rs"
 cortex-m = "0.7.1"
 cortex-m-rt = "0.6.12"
 panic-semihosting = "0.5.3"
+libm = "0.2.1"
+
+[dependencies.num-complex]
+version = "0.3.1"
+default-features = false
+features = ["libm"]
 
 [dependencies.cmsis_dsp]
 path = ".."
+features = ["micromath"]

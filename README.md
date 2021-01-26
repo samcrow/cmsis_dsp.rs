@@ -12,8 +12,45 @@ has other functionality, but nobody has written Rust bindings for it yet.
 
 ### Limitations
 
+#### Inline functions
+
 Some CMSIS-DSP functions, like `arm_sqrt_f32`, are defined inline in the header files and are missing from the compiled
 libraries. This package currently does not provide those functions.
+
+#### Basic C math functions
+
+Some CMSIS-DSP functions depend on math functions from the C standard library, like `sqrtf`. These C standard library
+math functions are not included in the CMSIS-DSP libraries. This may cause linker errors like this:
+
+```
+  = note: rust-lld: error: undefined symbol: sqrtf
+          >>> referenced by arm_math.h:6841 (../../Include/arm_math.h:6841)
+          >>>               arm_cmplx_mag_f32.o:(arm_cmplx_mag_f32) in archive /path/cmsis_dsp_sys/ARM.CMSIS.5.7.0/CMSIS/DSP/Lib/GCC/libarm_cortexM4lf_math.a
+          >>> referenced by arm_math.h:6841 (../../Include/arm_math.h:6841)
+          >>>               arm_cmplx_mag_f32.o:(arm_cmplx_mag_f32) in archive /path/cmsis_dsp_sys/ARM.CMSIS.5.7.0/CMSIS/DSP/Lib/GCC/libarm_cortexM4lf_math.a
+          >>> referenced by arm_math.h:6841 (../../Include/arm_math.h:6841)
+          >>>               arm_cmplx_mag_f32.o:(arm_cmplx_mag_f32) in archive /path/cmsis_dsp_sys/ARM.CMSIS.5.7.0/CMSIS/DSP/Lib/GCC/libarm_cortexM4lf_math.a
+          >>> referenced 4 more times
+
+```
+
+The easiest way to fix this is to enable the `libm` or `micromath` feature on the `cmsis_dsp` package.
+This will add a dependency on [libm](https://crates.io/crates/libm) or [micromath](https://crates.io/crates/micromath)
+and implement some of the C standard library math functions.
+
+The `libm` library implements more functions than `micromath`. Its implementations may be more precise but take up
+more code space.
+
+If both `libm` and `micromath` features are enabled, the `libm` implementations will be used.
+
+Alternatively, you can implement only the functions you need with an implementation of your choice, for example:
+
+```rust
+#[no_mangle]
+pub extern "C" fn sqrtf(value: f32) -> f32 {
+    // Implementation goes here
+}
+```
 
 ## Configuring the bindings
 
