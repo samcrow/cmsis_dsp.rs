@@ -15,7 +15,7 @@ has other functionality, but nobody has written Rust bindings for it yet.
 Some CMSIS-DSP functions, like `arm_sqrt_f32`, are defined inline in the header files and are missing from the compiled
 libraries. This package currently does not provide those functions.
 
-## Configuring and using the bindings
+## Configuring the bindings
 
 Different versions of the library will be linked depending on the type of processor the code will run on.
 You may need to enable some Cargo features depending on the target:
@@ -25,7 +25,7 @@ You may need to enable some Cargo features depending on the target:
  * Cortex-M33 (target `thumbv8m.main-none-eabi` or `thumbv8m.main-none-eabihf`): If the processor supports DSP 
    instructions, enable the `dsp-instructions` feature
    
-All other targets will be configured automatically based on the target passed to cargo. If you forget to enable a
+All other options will be configured automatically based on the target passed to cargo. If you forget to enable a
 feature, everything should still work but it may be slower.
 
 ## Licensing
