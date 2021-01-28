@@ -1,6 +1,6 @@
 [package]
-name = "cmsis_dsp_sys"
-description = "Low-level interfaces to the ARM CMSIS DSP library"
+name = "cmsis_dsp_sys_pregenerated"
+description = "Low-level interfaces to the ARM CMSIS-DSP library"
 version = "0.1.0"
 authors = ["Sam Crow <scrow@eng.ucsd.edu>"]
 edition = "2018"

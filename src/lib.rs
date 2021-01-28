@@ -22,7 +22,7 @@
 //!
 //!
 
-extern crate cmsis_dsp_sys;
+extern crate cmsis_dsp_sys_pregenerated as cmsis_dsp_sys;
 
 pub mod basic;
 pub mod transform;

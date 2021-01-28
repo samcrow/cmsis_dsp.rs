@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cmsis_dsp.iml" filepath="$PROJECT_DIR$/cmsis_dsp.iml" />
       <module fileurl="file://$PROJECT_DIR$/cmsis_dsp_example/cmsis_dsp_example.iml" filepath="$PROJECT_DIR$/cmsis_dsp_example/cmsis_dsp_example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cmsis_dsp_sys/cmsis_dsp_sys.iml" filepath="$PROJECT_DIR$/cmsis_dsp_sys/cmsis_dsp_sys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cmsis_dsp_sys_pregenerated/cmsis_dsp_sys_pregenerated.iml" filepath="$PROJECT_DIR$/cmsis_dsp_sys_pregenerated/cmsis_dsp_sys_pregenerated.iml" />
     </modules>
   </component>
 </project>
