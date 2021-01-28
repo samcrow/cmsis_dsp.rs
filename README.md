@@ -66,9 +66,10 @@ feature, everything should still work but it may be slower.
 
 ## Licensing
 
-ARM provides the CMSIS-DSP library under the Apache license 2.0. This package of bindings (cmsis_dsp_sys) is released
-under the 0-clause BSD license, which is extremely permissive and does not require attribution. This means that using
-CMSIS-DSP in Rust does not require any more license compliance work than using CMSIS-DSP in C.
+ARM provides the CMSIS-DSP library under the Apache license 2.0. This package of bindings (cmsis_dsp and
+cmsis_dsp_sys_pregenerated) is released under the 0-clause BSD license, which is extremely permissive and does not
+require attribution. This means that using CMSIS-DSP in Rust does not require any more license compliance work than
+using CMSIS-DSP in C.
 
 ## Links
 
