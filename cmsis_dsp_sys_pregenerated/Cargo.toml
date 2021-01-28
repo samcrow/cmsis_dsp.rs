@@ -10,6 +10,14 @@ repository = "https://github.com/samcrow/cmsis_dsp.rs"
 # The actual library files have the format arm_cortex[flags]_math
 links = "arm_cortex_math"
 
+[build-dependencies]
+ureq = "2.0.1"
+
+[build-dependencies.zip]
+version = "0.5.9"
+default-features = false
+features = ["deflate"]
+
 [features]
 # Target a Cortex-M7 core
 # If this feature is not enabled, the Cortex-M4 library will be used.

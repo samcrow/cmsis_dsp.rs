@@ -20,7 +20,7 @@
 
 mod bindings;
 pub use self::bindings::*;
-
+// Test modification  2
 /// C data types are defined here, because they're missing from libc and core::os::raw does not
 /// exist.
 mod ctypes {
