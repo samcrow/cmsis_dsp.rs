@@ -346,3 +346,111 @@ pub fn multiply_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
         );
     }
 }
+
+/// Negates multiple values
+///
+/// This is functionally equivalent to performing `dst[i] = -src[i]` for all values of i in
+/// range.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn negate_f32(src: &[f32], dst: &mut [f32]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_negate_f32(src.as_ptr(), dst.as_mut_ptr(), length);
+    }
+}
+
+/// Negates multiple values
+///
+/// This is functionally equivalent to performing `dst[i] = -src[i]` for all values of i in
+/// range.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn negate_q31(src: &[I1F31], dst: &mut [I1F31]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_negate_q31(src.as_ptr() as *const _, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Negates multiple values
+///
+/// This is functionally equivalent to performing `dst[i] = -src[i]` for all values of i in
+/// range.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn negate_q15(src: &[I1F15], dst: &mut [I1F15]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_negate_q15(src.as_ptr() as *const _, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Negates multiple values
+///
+/// This is functionally equivalent to performing `dst[i] = -src[i]` for all values of i in
+/// range.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn negate_q7(src: &[I1F7], dst: &mut [I1F7]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_negate_q7(src.as_ptr() as *const _, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Negates multiple values in place
+///
+/// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
+/// in range.
+pub fn negate_in_place_f32(values: &mut [f32]) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_negate_f32(ptr, ptr, length);
+    }
+}
+
+/// Negates multiple values in place
+///
+/// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
+/// in range.
+pub fn negate_in_place_q31(values: &mut [I1F31]) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_negate_q31(ptr as *const _, ptr as *mut _, length);
+    }
+}
+
+/// Negates multiple values in place
+///
+/// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
+/// in range.
+pub fn negate_in_place_q15(values: &mut [I1F15]) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_negate_q15(ptr as *const _, ptr as *mut _, length);
+    }
+}
+
+/// Negates multiple values in place
+///
+/// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
+/// in range.
+pub fn negate_in_place_q7(values: &mut [I1F7]) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_negate_q7(ptr as *const _, ptr as *mut _, length);
+    }
+}
