@@ -454,3 +454,84 @@ pub fn negate_in_place_q7(values: &mut [I1F7]) {
         cmsis_dsp_sys::arm_negate_q7(ptr as *const _, ptr as *mut _, length);
     }
 }
+
+/// Shifts the elements of a Q15 vector a specified number of bits
+///
+/// This is functionally equivalent to performing `dst[i] = src[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn shift_q15(src: &[I1F15], shift_bits: i8, dst: &mut [I1F15]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_shift_q15(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Shifts the elements of a Q31 vector a specified number of bits
+///
+/// This is functionally equivalent to performing `dst[i] = src[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn shift_q31(src: &[I1F31], shift_bits: i8, dst: &mut [I1F31]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_shift_q31(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Shifts the elements of a Q7 vector a specified number of bits
+///
+/// This is functionally equivalent to performing `dst[i] = src[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+///
+/// # Panics
+///
+/// This function panics if src and dst do not have the same length.
+pub fn shift_q7(src: &[I1F7], shift_bits: i8, dst: &mut [I1F7]) {
+    let length = check_length((src.len(), dst.len()));
+    unsafe {
+        cmsis_dsp_sys::arm_shift_q7(src.as_ptr() as *const _, shift_bits, dst.as_mut_ptr() as *mut _, length);
+    }
+}
+
+/// Shifts the elements of a Q15 vector a specified number of bits in place
+///
+/// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+pub fn shift_in_place_q15(values: &mut [I1F15], shift_bits: i8) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_shift_q15(ptr as *const _, shift_bits, ptr as *mut _, length);
+    }
+}
+
+/// Shifts the elements of a Q31 vector a specified number of bits in place
+///
+/// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+pub fn shift_in_place_q31(values: &mut [I1F31], shift_bits: i8) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_shift_q31(ptr as *const _, shift_bits, ptr as *mut _, length);
+    }
+}
+
+/// Shifts the elements of a Q7 vector a specified number of bits in place
+///
+/// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
+/// in range. Positive values shift left, negative values shift right.
+pub fn shift_in_place_q7(values: &mut [I1F7], shift_bits: i8) {
+    let length = check_length(values.len());
+    unsafe {
+        let ptr = values.as_mut_ptr();
+        cmsis_dsp_sys::arm_shift_q7(ptr as *const _, shift_bits, ptr as *mut _, length);
+    }
+}
