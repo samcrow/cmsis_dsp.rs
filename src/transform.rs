@@ -1,6 +1,5 @@
 //! Fast Fourier Transforms
 
-use core::convert::TryInto;
 use core::fmt::Debug;
 use core::mem::MaybeUninit;
 use core::u16;
@@ -72,9 +71,11 @@ impl FloatRealFft {
     }
 
     fn run_inner(&self, input: &[f32], output: &mut [f32], direction: Direction) {
-        // Check length
-        check_fft_size(self.0.fftLenRFFT, input.len());
-        check_fft_size(self.0.fftLenRFFT, output.len());
+        // From ARM docs: The implementation is using a trick so that the output buffer can be N float:
+        // the last real is packaged in the imaginary part of the first complex (since this imaginary part
+        // is not used and is zero).
+        assert_eq!(u32::from(self.0.fftLenRFFT), input.len() as u32);
+        assert_eq!(u32::from(self.0.fftLenRFFT), output.len() as u32);
 
         unsafe {
             cmsis_dsp_sys::arm_rfft_fast_f32(
@@ -111,14 +112,19 @@ impl Q15RealFft {
         }
     }
 
-    /// Runs an FFT on fixed-point values
+    /// Runs an FFT on fixed-point values.
+    ///
+    /// The output buffer must have lenth 2N, unlike the float version.
+    /// If using MVE (not unsupported here), N+2 is enough.
     ///
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q15 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#ga00e615f5db21736ad5b27fb6146f3fc5 .
     pub fn run(&self, input: &[I1F15], output: &mut [i16]) {
-        check_fft_size(self.0.fftLenReal, input.len());
-        check_fft_size(self.0.fftLenReal, output.len());
+        // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
+        // since it is containing the conjugate part (except for MVE version where N+2 is enough).
+        assert_eq!(self.0.fftLenReal, input.len() as u32);
+        assert_eq!(2u32 * self.0.fftLenReal, output.len() as u32);
 
         unsafe {
             cmsis_dsp_sys::arm_rfft_q15(&self.0, input.as_ptr() as *mut _, output.as_mut_ptr());
@@ -151,12 +157,17 @@ impl Q31RealFft {
 
     /// Runs an FFT on fixed-point values
     ///
+    /// The output buffer must have lenth 2N, unlike the float version.
+    /// If using MVE (not unsupported here), N+2 is enough.
+    ///
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q31 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#gabaeab5646aeea9844e6d42ca8c73fe3a .
     pub fn run(&self, input: &[I1F31], output: &mut [i32]) {
-        check_fft_size(self.0.fftLenReal, input.len());
-        check_fft_size(self.0.fftLenReal, output.len());
+        // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
+        // since it is containing the conjugate part (except for MVE version where N+2 is enough).
+        assert_eq!(self.0.fftLenReal, input.len() as u32);
+        assert_eq!(2u32 * self.0.fftLenReal, output.len() as u32);
 
         unsafe {
             cmsis_dsp_sys::arm_rfft_q31(&self.0, input.as_ptr() as *mut _, output.as_mut_ptr());
@@ -200,7 +211,7 @@ impl FloatFft {
         unsafe {
             // FFT size is number of complex values. arm_cfft_f32 expects size * 2 float values.
             // Complex<f32> is layout-compatible.
-            check_fft_size((*self.instance).fftLen, data.len());
+            assert_eq!(u32::from((*self.instance).fftLen), data.len() as u32);
             cmsis_dsp_sys::arm_cfft_f32(
                 self.instance,
                 data.as_mut_ptr() as *mut _,
@@ -393,7 +404,7 @@ impl Q15Fft {
         unsafe {
             // FFT size is number of complex values. arm_cfft_q15 expects size * 2 u16 values.
             // Complex<I1F15> is layout-compatible.
-            check_fft_size((*self.instance).fftLen, data.len());
+            assert_eq!(u32::from((*self.instance).fftLen), data.len() as u32);
             cmsis_dsp_sys::arm_cfft_q15(
                 self.instance,
                 data.as_mut_ptr() as *mut _,
@@ -445,7 +456,7 @@ impl Q31Fft {
         unsafe {
             // FFT size is number of complex values. arm_cfft_q31 expects size * 2 u32 values.
             // Complex<I1F31> is layout-compatible.
-            check_fft_size((*self.instance).fftLen, data.len());
+            assert_eq!(u32::from((*self.instance).fftLen), data.len() as u32);
             cmsis_dsp_sys::arm_cfft_q31(
                 self.instance,
                 data.as_mut_ptr() as *mut _,
@@ -454,17 +465,4 @@ impl Q31Fft {
             );
         }
     }
-}
-
-/// Checks that an FFT size is equal to the number of values in an input or output slice
-fn check_fft_size<N>(size: N, value_count: usize)
-where
-    usize: TryInto<N>,
-    <usize as TryInto<N>>::Error: Debug,
-    N: Debug + PartialEq,
-{
-    let value_count = value_count
-        .try_into()
-        .expect("Value count too large for FFT size type");
-    assert_eq!(size, value_count);
 }
