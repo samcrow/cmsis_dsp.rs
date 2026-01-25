@@ -12,6 +12,7 @@ use crate::check_length;
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn abs_f32(src: &[f32], dst: &mut [f32]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -27,6 +28,7 @@ pub fn abs_f32(src: &[f32], dst: &mut [f32]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn abs_q31(src: &[I1F31], dst: &mut [I1F31]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -42,6 +44,7 @@ pub fn abs_q31(src: &[I1F31], dst: &mut [I1F31]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn abs_q15(src: &[I1F15], dst: &mut [I1F15]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -57,6 +60,7 @@ pub fn abs_q15(src: &[I1F15], dst: &mut [I1F15]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn abs_q7(src: &[I1F7], dst: &mut [I1F7]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -68,6 +72,7 @@ pub fn abs_q7(src: &[I1F7], dst: &mut [I1F7]) {
 ///
 /// This is functionally equivalent to performing `values[i] = abs(values[i])` for all values of i
 /// in range.
+#[inline]
 pub fn abs_in_place_f32(values: &mut [f32]) {
     let length = check_length(values.len());
     // The CMSIS DSP function specifically does support argument aliasing. Is this really safe
@@ -82,6 +87,7 @@ pub fn abs_in_place_f32(values: &mut [f32]) {
 ///
 /// This is functionally equivalent to performing `values[i] = abs(values[i])` for all values of i
 /// in range.
+#[inline]
 pub fn abs_in_place_q31(values: &mut [I1F31]) {
     let length = check_length(values.len());
     unsafe {
@@ -94,6 +100,7 @@ pub fn abs_in_place_q31(values: &mut [I1F31]) {
 ///
 /// This is functionally equivalent to performing `values[i] = abs(values[i])` for all values of i
 /// in range.
+#[inline]
 pub fn abs_in_place_q15(values: &mut [I1F15]) {
     let length = check_length(values.len());
     unsafe {
@@ -106,6 +113,7 @@ pub fn abs_in_place_q15(values: &mut [I1F15]) {
 ///
 /// This is functionally equivalent to performing `values[i] = abs(values[i])` for all values of i
 /// in range.
+#[inline]
 pub fn abs_in_place_q7(values: &mut [I1F7]) {
     let length = check_length(values.len());
     unsafe {
@@ -122,6 +130,7 @@ pub fn abs_in_place_q7(values: &mut [I1F7]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn add_f32(src1: &[f32], src2: &[f32], dst: &mut [f32]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -137,6 +146,7 @@ pub fn add_f32(src1: &[f32], src2: &[f32], dst: &mut [f32]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn add_q31(src1: &[I1F31], src2: &[I1F31], dst: &mut [I1F31]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -157,6 +167,7 @@ pub fn add_q31(src1: &[I1F31], src2: &[I1F31], dst: &mut [I1F31]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn add_q15(src1: &[I1F15], src2: &[I1F15], dst: &mut [I1F15]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -177,6 +188,7 @@ pub fn add_q15(src1: &[I1F15], src2: &[I1F15], dst: &mut [I1F15]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn add_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -197,6 +209,7 @@ pub fn add_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
 /// # Panics
 ///
 /// This function panics if src1 and src2 do not have the same length.
+#[inline]
 pub fn dot_product_f32(src1: &[f32], src2: &[f32]) -> f32 {
     let length = check_length((src1.len(), src2.len()));
     let mut result = 0.0;
@@ -214,6 +227,7 @@ pub fn dot_product_f32(src1: &[f32], src2: &[f32]) -> f32 {
 /// # Panics
 ///
 /// This function panics if src1 and src2 do not have the same length.
+#[inline]
 pub fn dot_product_q31(src1: &[I1F31], src2: &[I1F31]) -> I16F48 {
     let length = check_length((src1.len(), src2.len()));
     let mut result = I16F48::from_bits(0);
@@ -236,6 +250,7 @@ pub fn dot_product_q31(src1: &[I1F31], src2: &[I1F31]) -> I16F48 {
 /// # Panics
 ///
 /// This function panics if src1 and src2 do not have the same length.
+#[inline]
 pub fn dot_product_q15(src1: &[I1F15], src2: &[I1F15]) -> I34F30 {
     let length = check_length((src1.len(), src2.len()));
     let mut result = I34F30::from_bits(0);
@@ -258,6 +273,7 @@ pub fn dot_product_q15(src1: &[I1F15], src2: &[I1F15]) -> I34F30 {
 /// # Panics
 ///
 /// This function panics if src1 and src2 do not have the same length.
+#[inline]
 pub fn dot_product_q7(src1: &[I1F7], src2: &[I1F7]) -> I18F14 {
     let length = check_length((src1.len(), src2.len()));
     let mut result = I18F14::from_bits(0);
@@ -280,6 +296,7 @@ pub fn dot_product_q7(src1: &[I1F7], src2: &[I1F7]) -> I18F14 {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn multiply_f32(src1: &[f32], src2: &[f32], dst: &mut [f32]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -295,6 +312,7 @@ pub fn multiply_f32(src1: &[f32], src2: &[f32], dst: &mut [f32]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn multiply_q31(src1: &[I1F31], src2: &[I1F31], dst: &mut [I1F31]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -315,6 +333,7 @@ pub fn multiply_q31(src1: &[I1F31], src2: &[I1F31], dst: &mut [I1F31]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn multiply_q15(src1: &[I1F15], src2: &[I1F15], dst: &mut [I1F15]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -335,6 +354,7 @@ pub fn multiply_q15(src1: &[I1F15], src2: &[I1F15], dst: &mut [I1F15]) {
 /// # Panics
 ///
 /// This function panics if src1, src2, and dst do not have the same length.
+#[inline]
 pub fn multiply_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
     let length = check_length((src1.len(), src2.len(), dst.len()));
     unsafe {
@@ -355,6 +375,7 @@ pub fn multiply_q7(src1: &[I1F7], src2: &[I1F7], dst: &mut [I1F7]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn negate_f32(src: &[f32], dst: &mut [f32]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -370,6 +391,7 @@ pub fn negate_f32(src: &[f32], dst: &mut [f32]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn negate_q31(src: &[I1F31], dst: &mut [I1F31]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -385,6 +407,7 @@ pub fn negate_q31(src: &[I1F31], dst: &mut [I1F31]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn negate_q15(src: &[I1F15], dst: &mut [I1F15]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -400,6 +423,7 @@ pub fn negate_q15(src: &[I1F15], dst: &mut [I1F15]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn negate_q7(src: &[I1F7], dst: &mut [I1F7]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -411,6 +435,7 @@ pub fn negate_q7(src: &[I1F7], dst: &mut [I1F7]) {
 ///
 /// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
 /// in range.
+#[inline]
 pub fn negate_in_place_f32(values: &mut [f32]) {
     let length = check_length(values.len());
     unsafe {
@@ -423,6 +448,7 @@ pub fn negate_in_place_f32(values: &mut [f32]) {
 ///
 /// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
 /// in range.
+#[inline]
 pub fn negate_in_place_q31(values: &mut [I1F31]) {
     let length = check_length(values.len());
     unsafe {
@@ -435,6 +461,7 @@ pub fn negate_in_place_q31(values: &mut [I1F31]) {
 ///
 /// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
 /// in range.
+#[inline]
 pub fn negate_in_place_q15(values: &mut [I1F15]) {
     let length = check_length(values.len());
     unsafe {
@@ -447,6 +474,7 @@ pub fn negate_in_place_q15(values: &mut [I1F15]) {
 ///
 /// This is functionally equivalent to performing `values[i] = -values[i]` for all values of i
 /// in range.
+#[inline]
 pub fn negate_in_place_q7(values: &mut [I1F7]) {
     let length = check_length(values.len());
     unsafe {
@@ -463,6 +491,7 @@ pub fn negate_in_place_q7(values: &mut [I1F7]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn shift_q15(src: &[I1F15], shift_bits: i8, dst: &mut [I1F15]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -478,6 +507,7 @@ pub fn shift_q15(src: &[I1F15], shift_bits: i8, dst: &mut [I1F15]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn shift_q31(src: &[I1F31], shift_bits: i8, dst: &mut [I1F31]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -493,6 +523,7 @@ pub fn shift_q31(src: &[I1F31], shift_bits: i8, dst: &mut [I1F31]) {
 /// # Panics
 ///
 /// This function panics if src and dst do not have the same length.
+#[inline]
 pub fn shift_q7(src: &[I1F7], shift_bits: i8, dst: &mut [I1F7]) {
     let length = check_length((src.len(), dst.len()));
     unsafe {
@@ -504,6 +535,7 @@ pub fn shift_q7(src: &[I1F7], shift_bits: i8, dst: &mut [I1F7]) {
 ///
 /// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
 /// in range. Positive values shift left, negative values shift right.
+#[inline]
 pub fn shift_in_place_q15(values: &mut [I1F15], shift_bits: i8) {
     let length = check_length(values.len());
     unsafe {
@@ -516,6 +548,7 @@ pub fn shift_in_place_q15(values: &mut [I1F15], shift_bits: i8) {
 ///
 /// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
 /// in range. Positive values shift left, negative values shift right.
+#[inline]
 pub fn shift_in_place_q31(values: &mut [I1F31], shift_bits: i8) {
     let length = check_length(values.len());
     unsafe {
@@ -528,6 +561,7 @@ pub fn shift_in_place_q31(values: &mut [I1F31], shift_bits: i8) {
 ///
 /// This is functionally equivalent to performing `values[i] = values[i] << shiftBits` for all values of i
 /// in range. Positive values shift left, negative values shift right.
+#[inline]
 pub fn shift_in_place_q7(values: &mut [I1F7], shift_bits: i8) {
     let length = check_length(values.len());
     unsafe {

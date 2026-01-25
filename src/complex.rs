@@ -11,6 +11,7 @@ use crate::check_length;
 ///
 /// This function panics if source.len() is not equal to destination.len(), or if either length
 /// is too large to fit into a 32-bit integer
+#[inline]
 pub fn complex_magnitude_f32(source: &[Complex32], destination: &mut [f32]) {
     let length = check_length((source.len(), destination.len()));
     unsafe {

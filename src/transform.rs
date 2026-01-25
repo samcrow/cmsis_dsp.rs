@@ -45,6 +45,7 @@ impl FloatRealFft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u16) -> Result<Self> {
         let mut data = MaybeUninit::<cmsis_dsp_sys::arm_rfft_fast_instance_f32>::uninit();
         unsafe {
@@ -58,6 +59,7 @@ impl FloatRealFft {
     /// # Panics
     ///
     /// This function panics if input or output has a length not equal to the size of this FFT.
+    #[inline]
     pub fn run(&self, input: &mut [f32], output: &mut [f32]) {
         self.run_inner(input, output, Direction::Forward);
     }
@@ -66,6 +68,7 @@ impl FloatRealFft {
     /// # Panics
     ///
     /// This function panics if input or output has a length not equal to the size of this FFT.
+    #[inline]
     pub fn run_inverse(&self, input: &mut [f32], output: &mut [f32]) {
         self.run_inner(input, output, Direction::Inverse);
     }
@@ -98,6 +101,7 @@ impl Q15RealFft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u32, direction: Direction, output_order: OutputOrder) -> Result<Self> {
         let mut data = MaybeUninit::<cmsis_dsp_sys::arm_rfft_instance_q15>::uninit();
         unsafe {
@@ -120,6 +124,7 @@ impl Q15RealFft {
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q15 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#ga00e615f5db21736ad5b27fb6146f3fc5 .
+    #[inline]
     pub fn run(&self, input: &mut [I1F15], output: &mut [i16]) {
         // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
         // since it is containing the conjugate part (except for MVE version where N+2 is enough).
@@ -141,6 +146,7 @@ impl Q31RealFft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u32, direction: Direction, output_order: OutputOrder) -> Result<Self> {
         let mut data = MaybeUninit::<cmsis_dsp_sys::arm_rfft_instance_q31>::uninit();
         unsafe {
@@ -163,6 +169,7 @@ impl Q31RealFft {
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q31 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#gabaeab5646aeea9844e6d42ca8c73fe3a .
+    #[inline]
     pub fn run(&self, input: &mut [I1F31], output: &mut [i32]) {
         // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
         // since it is containing the conjugate part (except for MVE version where N+2 is enough).
@@ -188,6 +195,7 @@ impl FloatFft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u16) -> Result<Self> {
         let instance = unsafe {
             match size {
@@ -207,6 +215,7 @@ impl FloatFft {
     }
 
     /// Runs the FFT in-place on a buffer of values
+    #[inline]
     pub fn run(&self, data: &mut [Complex32], direction: Direction, output_order: OutputOrder) {
         unsafe {
             // FFT size is number of complex values. arm_cfft_f32 expects size * 2 float values.
@@ -226,6 +235,7 @@ impl FloatFft {
 ///
 /// This can offer slightly better performance than FloatFft because it skips the data
 /// length check.
+#[inline]
 pub fn float_fft_128(data: &mut [Complex32; 128], direction: Direction, output_order: OutputOrder) {
     unsafe {
         cmsis_dsp_sys::arm_cfft_f32(
@@ -251,6 +261,7 @@ pub trait FftBuffer {
 }
 
 impl FftBuffer for [Complex32; 16] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -263,6 +274,7 @@ impl FftBuffer for [Complex32; 16] {
     }
 }
 impl FftBuffer for [Complex32; 32] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -275,6 +287,7 @@ impl FftBuffer for [Complex32; 32] {
     }
 }
 impl FftBuffer for [Complex32; 64] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -287,6 +300,7 @@ impl FftBuffer for [Complex32; 64] {
     }
 }
 impl FftBuffer for [Complex32; 128] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -299,6 +313,7 @@ impl FftBuffer for [Complex32; 128] {
     }
 }
 impl FftBuffer for [Complex32; 256] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -311,6 +326,7 @@ impl FftBuffer for [Complex32; 256] {
     }
 }
 impl FftBuffer for [Complex32; 512] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -323,6 +339,7 @@ impl FftBuffer for [Complex32; 512] {
     }
 }
 impl FftBuffer for [Complex32; 1024] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -335,6 +352,7 @@ impl FftBuffer for [Complex32; 1024] {
     }
 }
 impl FftBuffer for [Complex32; 2048] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -347,6 +365,7 @@ impl FftBuffer for [Complex32; 2048] {
     }
 }
 impl FftBuffer for [Complex32; 4096] {
+    #[inline]
     fn run_fft(&mut self, direction: Direction, output_order: OutputOrder) {
         unsafe {
             cmsis_dsp_sys::arm_cfft_f32(
@@ -376,6 +395,7 @@ impl Q15Fft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u16, direction: Direction, output_order: OutputOrder) -> Result<Self> {
         let instance = unsafe {
             match size {
@@ -400,6 +420,7 @@ impl Q15Fft {
     }
 
     /// Runs the FFT in-place on a buffer of values
+    #[inline]
     pub fn run(&self, data: &mut [Complex<I1F15>]) {
         unsafe {
             // FFT size is number of complex values. arm_cfft_q15 expects size * 2 u16 values.
@@ -428,6 +449,7 @@ impl Q31Fft {
     ///
     /// Valid size values are 32, 64, 128, 256, 512, 1024, 2048, and 4096. This function returns
     /// an error if the size value is not valid.
+    #[inline]
     pub fn new(size: u16) -> Result<Self> {
         let instance = unsafe {
             match size {
@@ -447,6 +469,7 @@ impl Q31Fft {
     }
 
     /// Runs the FFT in-place on a buffer of values
+    #[inline]
     pub fn run(
         &self,
         data: &mut [Complex<I1F31>],
