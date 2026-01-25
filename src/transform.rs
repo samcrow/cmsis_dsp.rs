@@ -58,7 +58,7 @@ impl FloatRealFft {
     /// # Panics
     ///
     /// This function panics if input or output has a length not equal to the size of this FFT.
-    pub fn run(&self, input: &[f32], output: &mut [f32]) {
+    pub fn run(&self, input: &mut [f32], output: &mut [f32]) {
         self.run_inner(input, output, Direction::Forward);
     }
     /// Runs an inverse FFT on a set of values, placing the results in output
@@ -66,11 +66,11 @@ impl FloatRealFft {
     /// # Panics
     ///
     /// This function panics if input or output has a length not equal to the size of this FFT.
-    pub fn run_inverse(&self, input: &[f32], output: &mut [f32]) {
+    pub fn run_inverse(&self, input: &mut [f32], output: &mut [f32]) {
         self.run_inner(input, output, Direction::Inverse);
     }
 
-    fn run_inner(&self, input: &[f32], output: &mut [f32], direction: Direction) {
+    fn run_inner(&self, input: &mut [f32], output: &mut [f32], direction: Direction) {
         // From ARM docs: The implementation is using a trick so that the output buffer can be N float:
         // the last real is packaged in the imaginary part of the first complex (since this imaginary part
         // is not used and is zero).
@@ -79,8 +79,8 @@ impl FloatRealFft {
 
         unsafe {
             cmsis_dsp_sys::arm_rfft_fast_f32(
-                &self.0 as *const _ as *mut _,
-                input.as_ptr() as *mut _,
+                &self.0 as *const _,
+                input.as_mut_ptr() as *mut _,
                 output.as_mut_ptr(),
                 direction as _,
             );
@@ -120,14 +120,14 @@ impl Q15RealFft {
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q15 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#ga00e615f5db21736ad5b27fb6146f3fc5 .
-    pub fn run(&self, input: &[I1F15], output: &mut [i16]) {
+    pub fn run(&self, input: &mut [I1F15], output: &mut [i16]) {
         // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
         // since it is containing the conjugate part (except for MVE version where N+2 is enough).
         assert_eq!(self.0.fftLenReal, input.len() as u32);
         assert_eq!(2u32 * self.0.fftLenReal, output.len() as u32);
 
         unsafe {
-            cmsis_dsp_sys::arm_rfft_q15(&self.0, input.as_ptr() as *mut _, output.as_mut_ptr());
+            cmsis_dsp_sys::arm_rfft_q15(&self.0, input.as_mut_ptr() as *mut _, output.as_mut_ptr());
         }
     }
 }
@@ -163,14 +163,14 @@ impl Q31RealFft {
     /// The output type depends on the size of the FFT. To determine how to interpret the output
     /// bits, refer to the table in the arm_rfft_q31 function documentation
     /// at https://www.keil.com/pack/doc/cmsis/DSP/html/group__RealFFT.html#gabaeab5646aeea9844e6d42ca8c73fe3a .
-    pub fn run(&self, input: &[I1F31], output: &mut [i32]) {
+    pub fn run(&self, input: &mut [I1F31], output: &mut [i32]) {
         // From ARM docs: If the input buffer is of length N (fftLenReal), the output buffer must have length 2N
         // since it is containing the conjugate part (except for MVE version where N+2 is enough).
         assert_eq!(self.0.fftLenReal, input.len() as u32);
         assert_eq!(2u32 * self.0.fftLenReal, output.len() as u32);
 
         unsafe {
-            cmsis_dsp_sys::arm_rfft_q31(&self.0, input.as_ptr() as *mut _, output.as_mut_ptr());
+            cmsis_dsp_sys::arm_rfft_q31(&self.0, input.as_mut_ptr() as *mut _, output.as_mut_ptr());
         }
     }
 }
