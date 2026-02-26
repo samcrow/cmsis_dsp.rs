@@ -13,7 +13,7 @@ repository = "https://github.com/samcrow/cmsis_dsp.rs"
 fixed = "1.2.0"
 
 [dependencies.num-complex]
-version = "0.3.0"
+version = "0.4"
 default-features = false
 
 [dependencies.libm]
