@@ -10,7 +10,7 @@ repository = "https://github.com/samcrow/cmsis_dsp.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-fixed = "1.2.0"
+fixed = "1.30.0"
 
 [dependencies.num-complex]
 version = "0.4"
